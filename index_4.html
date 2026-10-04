@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troy Nadin — PhD Candidate in Economics</title>
+<meta name="description" content="Troy Nadin, PhD student in Economics at Toronto Metropolitan University. Research in macro-finance, sovereign debt, and financial development in resource-dependent economies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1d1f23;
+    --muted: #5d636e;
+    --line: #e4e1da;
+    --accent: #1f4e79;
+    --accent-soft: #e8eef5;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14161a; --surface: #1b1e23; --text: #e8e6e1; --muted: #9aa0aa;
+      --line: #2c3036; --accent: #8fb6dc; --accent-soft: #1f2a36;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a; --surface: #1b1e23; --text: #e8e6e1; --muted: #9aa0aa;
+    --line: #2c3036; --accent: #8fb6dc; --accent-soft: #1f2a36;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--text); }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  nav a { color: var(--muted); font-size: .92rem; font-weight: 500; }
+  nav a:hover, nav a.active { color: var(--text); text-decoration: none; }
+  .theme-btn {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 15px;
+  }
+  .menu-btn { display: none; }
+
+  /* Hero */
+  .hero { padding: 72px 0 48px; display: grid; grid-template-columns: 160px 1fr; gap: 40px; align-items: center; }
+  .avatar {
+    width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+    background: var(--accent-soft); display: grid; place-items: center;
+    font-family: var(--serif); font-size: 3rem; color: var(--accent); border: 1px solid var(--line);
+  }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.15; margin: 0 0 8px; letter-spacing: -.01em; }
+  .role { color: var(--muted); margin: 0 0 18px; font-size: 1.05rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px;
+    border: 1px solid var(--line); border-radius: 999px; font-size: .88rem; font-weight: 500;
+    color: var(--text); background: var(--surface);
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .pill.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .pill.primary:hover { opacity: .9; color: var(--bg); }
+
+  /* Sections */
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-family: var(--serif); font-weight: 600; font-size: 1.6rem; margin: 0 0 24px;
+  }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; margin: 0 0 6px; line-height: 1.35; }
+  p { margin: 0 0 14px; }
+  .lead { font-family: var(--serif); font-size: 1.15rem; line-height: 1.7; }
+  .muted { color: var(--muted); }
+  .interests { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tag {
+    font-size: .8rem; font-weight: 500; padding: 4px 10px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+
+  /* Research cards */
+  .paper {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px; margin-bottom: 16px;
+  }
+  .paper .label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .paper .status { font-size: .85rem; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .paper .methods { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+  details summary { cursor: pointer; color: var(--accent); font-size: .9rem; font-weight: 500; margin-top: 10px; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: "+ "; }
+  details[open] summary::before { content: "− "; }
+  details p { margin-top: 10px; font-size: .95rem; }
+  .project-head { margin-bottom: 20px; }
+
+  /* CV timeline */
+  .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .cv-block h3 { font-family: var(--sans); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .item { margin-bottom: 18px; }
+  .item .t { font-weight: 600; }
+  .item .s { color: var(--muted); font-size: .92rem; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .contact-card .k { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+
+  footer { padding: 32px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; text-align: left; padding-top: 40px; gap: 24px; }
+    .avatar { width: 112px; height: 112px; font-size: 2.2rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 16px; }
+    .menu-btn { display: inline-block; }
+    nav ul {
+      display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 20px;
+    }
+    nav ul.open { display: flex; }
+    nav li a { display: block; padding: 10px 0; }
+  }
+  @media print {
+    header.nav, .theme-btn, details summary { display: none; }
+    details > p { display: block; }
+    section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">Troy Nadin</a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div>
+      <button class="theme-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Replace the div below with: <img class="avatar" src="photo.jpg" alt="Troy Nadin"> -->
+    <div class="avatar" aria-hidden="true">TN</div>
+    <div>
+      <h1>Troy Nadin</h1>
+      <p class="role">PhD Student in Economics · Toronto Metropolitan University</p>
+      <div class="links">
+        <a class="pill primary" href="cv.pdf">Download CV</a>
+        <a class="pill" href="mailto:your.email@torontomu.ca">Email</a>
+        <a class="pill" href="https://www.linkedin.com/in/your-handle">LinkedIn</a>
+        <a class="pill" href="https://github.com/your-handle">GitHub</a>
+        <a class="pill" href="https://scholar.google.com/">Google Scholar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">I am a PhD student in Economics at Toronto Metropolitan University, working under the supervision of Dr. Brennan Thompson. My research studies the macro-finance of resource-dependent emerging economies: how sovereign default and restructuring, commodity price shocks, and financial-sector development shape credit, asset prices, and growth.</p>
+    <p>Before my doctoral studies, I spent four years in assurance and accounting, including at EY, working on audit, financial reporting under IFRS, and credit and covenant analysis. That experience shapes my empirical work: I care about measurement, institutional detail, and data that can be traced back to its source. I hold a Master of Finance from Saint Mary's University and am a CFA Level II candidate.</p>
+    <div class="interests">
+      <span class="tag">Macro-Finance</span>
+      <span class="tag">Sovereign Debt</span>
+      <span class="tag">Development Economics</span>
+      <span class="tag">Commodity Markets</span>
+      <span class="tag">Banking &amp; Digital Finance</span>
+      <span class="tag">Applied Econometrics</span>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <h2>Research</h2>
+    <div class="project-head">
+      <h3>Dissertation: Essays on the Macro-Finance of a Post-Default Resource-Dependent Economy: Empirical Evidence from Zambia</h3>
+      <p class="muted">Zambia became the first African sovereign to default in the pandemic era and one of the first test cases of the G20 Common Framework. Its copper dependence and fast-growing mobile money sector make it a natural laboratory for studying how fiscal, external, and financial shocks interact.</p>
+    </div>
+
+    <article class="paper">
+      <div class="label">Essay 1</div>
+      <h3>Sovereign Debt Restructuring and the Crowding-Out Channel</h3>
+      <div class="status">Work in progress</div>
+      <p>Examines whether default and restructuring crowd out private credit as the state turns to domestic banks for financing.</p>
+      <div class="methods"><span class="tag">Event Study</span><span class="tag">Synthetic Control</span></div>
+      <details>
+        <summary>Abstract</summary>
+        <p>Add a 120–180 word abstract here: the question, the data, the identification strategy, and the headline result once available.</p>
+      </details>
+    </article>
+
+    <article class="paper">
+      <div class="label">Essay 2</div>
+      <h3>Commodity Shocks, Exchange Rate Volatility, and Asset Pricing</h3>
+      <div class="status">Work in progress</div>
+      <p>Traces how copper price shocks pass through to the Kwacha, inflation, and bank asset quality, and characterizes regime shifts in exchange-rate volatility.</p>
+      <div class="methods"><span class="tag">Sign-Restricted SVAR</span><span class="tag">Markov-Switching GARCH</span></div>
+      <details>
+        <summary>Abstract</summary>
+        <p>Add abstract here.</p>
+      </details>
+    </article>
+
+    <article class="paper">
+      <div class="label">Essay 3</div>
+      <h3>Banking Stability, Financial Deepening, and Digital Transmission</h3>
+      <div class="status">Work in progress</div>
+      <p>Uses a hand-assembled bank panel and the staggered district-level rollout of mobile money to study how digital finance changes bank stability and monetary transmission.</p>
+      <div class="methods"><span class="tag">System GMM</span><span class="tag">Difference-in-Differences</span></div>
+      <details>
+        <summary>Abstract</summary>
+        <p>Add abstract here.</p>
+      </details>
+    </article>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <div class="cv-grid">
+      <div class="cv-block">
+        <h3>Education</h3>
+        <div class="item"><div class="t">PhD, Economics</div><div class="s">Toronto Metropolitan University · 2026 – present</div></div>
+        <div class="item"><div class="t">Master of Finance</div><div class="s">Saint Mary's University</div></div>
+        <div class="item"><div class="t">Graduate Diploma in Accounting</div><div class="s">Queen's University</div></div>
+        <div class="item"><div class="t">Honours B.Com., Minor in Economics</div><div class="s">McMaster University</div></div>
+
+        <h3 style="margin-top:28px">Awards</h3>
+        <div class="item"><div class="t">SSHRC Canada Graduate Research Scholarship</div><div class="s">Edit status/year as appropriate</div></div>
+      </div>
+      <div class="cv-block">
+        <h3>Professional Experience</h3>
+        <div class="item"><div class="t">DJB CPAs</div><div class="s">Intermediate Staff Accountant, Assurance · 2023 – 2024</div></div>
+        <div class="item"><div class="t">Fuller Landau LLP</div><div class="s">Intermediate Staff Accountant · 2023</div></div>
+        <div class="item"><div class="t">Pettinelli Mastroluisi LLP</div><div class="s">Intermediate Staff Accountant · 2021 – 2023</div></div>
+        <div class="item"><div class="t">EY LLP</div><div class="s">Intermediate Staff Accountant, Assurance · 2020 – 2021</div></div>
+
+        <h3 style="margin-top:28px">Skills</h3>
+        <div class="skills">
+          <span class="tag">R</span><span class="tag">Python</span><span class="tag">Stata</span>
+          <span class="tag">Bloomberg Terminal</span><span class="tag">Advanced Excel</span><span class="tag">CFA Level II Candidate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <div class="item"><div class="t">Teaching Assistant — Course name (ECN ###)</div><div class="s">Toronto Metropolitan University · Term, Year</div></div>
+    <p class="muted">Add TA positions, guest lectures, and course materials here as they come up.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="k">Email</div><a href="mailto:your.email@torontomu.ca">your.email@torontomu.ca</a></div>
+      <div class="contact-card"><div class="k">Office</div>Department of Economics<br>Toronto Metropolitan University<br>Toronto, ON</div>
+      <div class="contact-card"><div class="k">Supervisor</div>Dr. Brennan Thompson</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Troy Nadin · Last updated October 2026</div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Theme toggle (remembers choice)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const dark = root.dataset.theme
+      ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  });
+
+  // Mobile menu
+  const menu = document.getElementById('menu');
+  document.getElementById('menuBtn').addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Highlight active section in nav
+  const links = [...menu.querySelectorAll('a')];
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
